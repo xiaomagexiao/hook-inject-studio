@@ -1,11 +1,11 @@
 #include <jni.h>
 #include <string>
 #include "Util.h"
-
+using namespace std;
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_mama_readmemory_NativeHelper_test(
+Java_com_example_mama_readmemosdfsdfry_HookHelper_test(
         JNIEnv *env, jclass type) {
 
-    cout << "temp address: " << endl;
+//    cout << "temp address: " << endl;
 }

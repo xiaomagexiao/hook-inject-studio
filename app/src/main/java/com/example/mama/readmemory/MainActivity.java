@@ -6,9 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hook.HookHelper;
+
 public class MainActivity extends AppCompatActivity {
 
-
+    static {
+        System.loadLibrary("injecter");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         this.findViewById(R.id.execute).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NativeHelper.test();
+                HookHelper.test();
             }
         });
 

@@ -52,22 +52,15 @@ public class ScanMemoryTest extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.start:
-                NativeHelper.init(Long.valueOf(this.et_search_value.getText().toString()));
                 break;
             case R.id.bigger:
-                NativeHelper.bigger();
                 break;
             case R.id.smaller:
-                NativeHelper.smaller();
-                break;
             case R.id.equal:
-                NativeHelper.equal();
                 break;
             case R.id.restart:
-                NativeHelper.clear();
                 break;
             case R.id.change:
-                NativeHelper.newValue(Long.valueOf(this.et_search_value.getText().toString()));
                 break;
         }
     }

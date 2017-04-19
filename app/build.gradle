@@ -20,10 +20,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
-
             // For ndk-build, instead use ndkBuild {}
             cmake {
-
+                abiFilters 'armeabi-v7a'
                 // Passes optional arguments to CMake.
 //                arguments "-DCMAKE_VERBOSE_MAKEFILE=TRUE"
 
@@ -56,4 +55,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testCompile 'junit:junit:4.12'
+    compile project(":hooklibrary")
 }
