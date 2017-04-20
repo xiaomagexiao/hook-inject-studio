@@ -1,1 +1,1 @@
-include ':app', ':hooklibrary', ":injectdex"
+include ':app', ':inject_dex', ":inject_dex_target", ":inject_zygote"
