@@ -12,7 +12,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.mama.readmemory"
+        applicationId "com.example.hook.dex.target"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
