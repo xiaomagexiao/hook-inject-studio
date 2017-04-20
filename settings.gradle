@@ -1,1 +1,1 @@
-include ':app', ':hooklibrary'
+include ':app', ':hooklibrary', ":injectdex"
