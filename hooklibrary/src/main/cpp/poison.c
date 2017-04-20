@@ -24,7 +24,10 @@ struct process_hook {
 	char 		*dso;
 } process_hook = {0, ""};
 
-int main(int argc, char* argv[]) {
+int hook(){
+    return main2(0, NULL);
+}
+int main2(int argc, char* argv[]) {
 
 	struct pt_regs regs;
 	//process_hook.dso = strdup(argv[1]);	//将参数1的字符串拷贝给process_hook.dso

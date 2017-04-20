@@ -13,13 +13,14 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.mama.readmemory"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
+
             // For ndk-build, instead use ndkBuild {}
             cmake {
                 abiFilters 'armeabi-v7a'
@@ -55,5 +56,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testCompile 'junit:junit:4.12'
-    compile project(":hooklibrary")
+    compile project(path: ':hooklibrary')
 }

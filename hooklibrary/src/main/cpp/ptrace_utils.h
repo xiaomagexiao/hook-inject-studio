@@ -31,7 +31,8 @@ int ptrace_call(pid_t pid, uint32_t addr, long *params, int num_params, struct p
 
 void* ptrace_dlopen(pid_t target_pid, void* remote_dlopen_addr, const char*  filename);
 
-//int call_so_entry(pid_t target_pid, uint32_t proc,long *params, int num_params, struct pt_regs* regs)ï¼?
+//int call_so_entry(pid_t target_pid, uint32_t proc,long *params, int num_params, struct pt_regs* regs)ï¿½?
 uint8_t *map_base;
 
+int find_pid_of(const char *process_name);
 #endif /* PTRACE_UTILS_H_ */

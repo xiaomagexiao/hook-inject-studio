@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.hook.HookHelper;
 
+
 public class MainActivity extends AppCompatActivity {
 
     static {
