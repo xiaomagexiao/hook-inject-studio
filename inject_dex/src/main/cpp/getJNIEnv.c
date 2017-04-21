@@ -70,7 +70,7 @@ int so_entry() {
 
     /* set dex dir */
     LOGD("step1: setting dex dir and opt dir...");
-    dexPath = "/data/local/tmp/inject_dex_target-debug.apk";
+    dexPath = "/data/local/tmp/inject.dex";
     dexOptDir = "/data/data/cn.com.whatyfjsd.mooc/cache";
     className = "com.example.dex.ui.Say";
     methodName = "show"; 

@@ -10,5 +10,11 @@ fun_push_file()
 }
 
 fun_push_file "inject_dex/build/intermediates/cmake/release/obj/armeabi-v7a/libinject-dex.so" "libinject-dex.so"
-fun_push_file "inject_dex_target/build/outputs/apk/inject_dex_target-debug.apk" "inject_dex_target-debug.apk"
+rm -rf "inject_dex_target/build/outputs/apk/unzip"
+# unzip "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk" -d "inject_dex_target/build/outputs/apk/unzip"
+fun_push_file "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk" "inject.dex"
+# fun_push_file "/Users/mama/GitHub/hook-inject/android_dex_injection-master/jni/dex-target-model.apk" "inject_dex_target-debug.apk"
+
+# fun_push_file "inject_dex_target/build/outputs/apk/unzip/classes.dex" "inject.dex"
+
 adb shell ${temp_dir}/android_zygote_injection-master
