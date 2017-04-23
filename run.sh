@@ -17,6 +17,7 @@ fun_push_file "inject_dex/build/intermediates/cmake/release/obj/armeabi-v7a/libi
 fun_push_file "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk" "inject.apk"
 
 
+
 # copy so
 unzip -o "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk" lib/armeabi-v7a/${so_name} -d .
 echo "adb push lib/armeabi-v7a/${so_name} /data/data/${package}/lib/${so_name}"
