@@ -36,3 +36,4 @@ adb push ${exe_bin} ${temp_dir}/${exe_bin}
 adb shell ${temp_dir}/${exe_bin} "${package}" "/data/local/tmp/libinject-dex.so"
 
 #cd ${pwd}
+
