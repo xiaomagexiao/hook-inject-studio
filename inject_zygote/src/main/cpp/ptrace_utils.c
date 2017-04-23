@@ -374,7 +374,7 @@ void* ptrace_dlsym(pid_t target_pid, void* remote_dlsym_addr, void* handler,cons
 	return regs.ARM_pc == 0 ? (void *) regs.ARM_r0 : NULL;
 }
 
-int call_so_entry(pid_t target_pid, uint32_t proc){
+int call_so_entry(pid_t target_pid, uint32_t proc, char *package){
 
 	int base;
 	struct pt_regs regs;
@@ -384,7 +384,23 @@ int call_so_entry(pid_t target_pid, uint32_t proc){
 		return -1 ;
 	if (strcmp("zygote", (void *)get_process_name(target_pid)) == 0 && zygote_special_process(target_pid) != 0) 
 		return -1 ;	
-	base = ptrace_call(target_pid, proc, NULL, 0, &regs);
+
+	//add params
+	long mmap_params[2];
+	size_t package_name_len = strlen(package) + 1;
+	void* filename_addr = (void *)find_space_by_mmap(target_pid, package_name_len);		//调用mmap函数，分配内存（用于存包名）
+	LOGI("[+] map_base is %d",(uint32_t)map_base);
+	if (filename_addr == NULL ) {
+		LOGE("[-] Call Remote mmap fails.\n");
+		return NULL ;
+	}
+
+	ptrace_write(target_pid, (uint8_t *)filename_addr, (uint8_t *)package, package_name_len);		//将filename写到filename_addr
+	//初始化参数列表，为后面的ptrace_call的调用
+	mmap_params[0] = (long)filename_addr;  //filename pointer
+	//end of add params
+
+	base = ptrace_call(target_pid, proc, mmap_params, 1, &regs);
 	if (ptrace_getregs(target_pid, &regs) == -1)
 		return -1;
 	LOGI("[+] call_so_entry  over   \n");

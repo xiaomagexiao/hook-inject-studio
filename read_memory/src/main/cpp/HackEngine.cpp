@@ -46,6 +46,10 @@ void HackEngine::getProcMapsWithFilter(int pid, vector<string> &resultVec,
                 find = true;
                 break;
             }
+            if (str.find("/data/app") != string::npos && str.find(".so") != string::npos) {
+                find = true;
+                break;
+            }
         }
         if (find) {
             resultVec.push_back(str);

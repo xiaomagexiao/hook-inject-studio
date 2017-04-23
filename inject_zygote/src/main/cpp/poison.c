@@ -24,17 +24,20 @@ struct process_hook {
 	char 		*dso;
 } process_hook = {0, ""};
 
-int hook(){
-    return main2(0, NULL);
-}
-int main2(int argc, char* argv[]) {
-
+int main(int argc, char* argv[]) {
+    LOGE("MAGE[+] change every time!!!\n");
 	struct pt_regs regs;
+    if(argc<3){
+        LOGE("MAGE[+] must have 3 params\n");
+        return 0;
+    }
+    LOGE("MAGE[+] package=%s\n", argv[1]);
+    LOGE("MAGE[+] so=%s\n", argv[2]);
 	//process_hook.dso = strdup(argv[1]);	//将参数1的字符串拷贝给process_hook.dso
 	//process_hook.pid = atoi(argv[1]);	//把参数2（字符串）转换为长整型
-	process_hook.dso = "/data/local/tmp/android_dex_injection-master.so";
+	process_hook.dso = argv[2];
 	//process_hook.pid = find_pid_of("zygote");
-	process_hook.pid = find_pid_of("cn.com.whatyfjsd.mooc");
+	process_hook.pid = find_pid_of(argv[1]);
 
 	LOGE("MAGE[+] i am in main!!!!!\n");
 
@@ -85,7 +88,7 @@ int main2(int argc, char* argv[]) {
 	}
 	LOGE("MAGE[+] so_entry = %x\n",proc);
 
-	int base = call_so_entry(process_hook.pid, proc);
+	int base = call_so_entry(process_hook.pid, proc, argv[1]);
 	LOGE("MAGE[+] base is %d\n",base);
 	if (base == -1){
 		LOGE("MAGE[-] Call so_entry function fail.\n");

@@ -33,3 +33,43 @@ tail -f /data/local/tmp/loglog.txt
 
 
 #### 原来依赖的module里一直只生成release的lib，把主的module改成支持c++项目后就可以生成debug的了。
+
+
+
+```
+# 快速根据包名杀进程
+kill -9 `ps |grep supercell |awk '{print $2}'`
+
+# 根据包名看进程模块
+cat /proc/`ps |grep supercell |awk '{print $2}'`/maps |grep search
+```
+
+
+- [lldb介绍网站](http://www.dllhook.com/post/51.html)
+
+```
+
+18.2 内存访问断点 watchpoint set expression -w read -- 内存地址
+watchpoint set expression -w read -- 0x16b9dd91
+18.2 内存写入断点 watchpoint set expression -w write -- 内存地址
+watchpoint set expression -w write -- 0x16b9dd91
+
+# 打印堆栈
+bt
+
+# 打印所有线程堆栈
+bt all
+
+# 运行
+c
+
+# 显示汇编
+x/5i $pc
+
+# 二进制显示
+x a01356e0
+
+# 写入
+memory write -s 4 a01356e0 150000
+
+```

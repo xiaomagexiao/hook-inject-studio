@@ -66,3 +66,32 @@ dependencies {
     compile project(path: ':inject_zygote')
     compile project(path: ':read_memory')
 }
+
+
+task build_native(type: Exec) {
+    println "start build native so..."
+    String buildPath = buildDir;
+    String workspace = buildPath.substring(0, buildPath.lastIndexOf(File.separator))
+    String os = System.getProperty("os.name");
+    String batPath = ""
+    if (os.toLowerCase().startsWith("win")) {
+        batPath = workspace + File.separator + "self_build.bat"
+        commandLine batPath, workspace
+    } else {
+        batPath = workspace + File.separator + "self_build.sah"
+        commandLine "sh", batPath, workspace
+    }
+    println "execute: " + batPath
+}
+
+afterEvaluate {
+    android.applicationVariants.each { variant ->
+        String BUILD_TYPE = "${variant.buildType.name}"
+        if (BUILD_TYPE.toLowerCase() != "debug") {
+            return;
+        }
+        def shrinkTask = tasks.findByName("mergeDebugJniLibFolders")
+        build_native.dependsOn shrinkTask.taskDependencies.getDependencies(shrinkTask)
+        shrinkTask.dependsOn build_native
+    }
+}

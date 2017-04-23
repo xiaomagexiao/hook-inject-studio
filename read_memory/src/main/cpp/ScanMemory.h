@@ -10,10 +10,7 @@
 class ScanMemory {
 
 public:
-    ScanMemory() : lastSearchValue(0) {
-        moduleName="libsearch.so";
-
-    }
+    ScanMemory() : lastSearchValue(0) {}
 
     ~ScanMemory() {}
 
@@ -31,7 +28,6 @@ public:
 
 private:
     unsigned long lastSearchValue;
-    string moduleName;
     vector<unsigned long> resultVec;
     vector<ModuleMemoryInfo> moduleVec;
 

@@ -9,12 +9,20 @@ void ScanMemory::initWithVlaue(unsigned long value) {
     lastSearchValue = value;
     vector<string> mapVecFilterTag;
     mapVecFilterTag.push_back("libc_malloc");
-    mapVecFilterTag.push_back(moduleName);
     moduleVec.clear();
+    cout << "init with value" << endl;
     HackEngine::getInstance()->getProcMapsModuleWithFilter(getpid(), moduleVec, mapVecFilterTag);
 //    printModuleInfo();
 
     for (ModuleMemoryInfo module:moduleVec) {
+        cout <<getpid()<< " - search module:"
+             << module.name
+             << ", "
+             << hex
+             << module.startAddress
+             << "-"
+             << module.endAddress
+             <<endl;
         for (unsigned long i = module.startAddress; i < module.endAddress; i += 4) {
             if (*(unsigned long *) i == lastSearchValue) {
                 resultVec.push_back(i);
@@ -24,8 +32,9 @@ void ScanMemory::initWithVlaue(unsigned long value) {
     printResult();
 }
 
-void ScanMemory::printResult( ) const {
-    cout << "test : [" << dec <<lastSearchValue << "], found count : [" << resultVec.size() << "]." << endl;
+void ScanMemory::printResult() const {
+    cout << "test : [" << dec << lastSearchValue << "], found count : [" << resultVec.size() << "]."
+         << endl;
     if (resultVec.size() < 20) {
         for (unsigned long address:resultVec) {
             cout << "address: " << hex << address << endl;
