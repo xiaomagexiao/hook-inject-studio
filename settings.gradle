@@ -1,1 +1,1 @@
-include ':app', ':inject_dex', ":inject_dex_target", ":inject_zygote"
+include ':app', ':inject_dex', ":inject_dex_target", ":inject_zygote", ":read_memory"

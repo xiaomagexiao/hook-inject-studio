@@ -27,4 +27,16 @@
         android:layout_height="wrap_content"
         android:text="内存扫描测试" />
 
+    <Button
+        android:id="@+id/temp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="temp2" />
+
+    <Button
+        android:id="@+id/temp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="temp3" />
+
 </LinearLayout>

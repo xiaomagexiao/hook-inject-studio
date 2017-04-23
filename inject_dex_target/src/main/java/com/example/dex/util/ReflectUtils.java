@@ -41,7 +41,7 @@ public class ReflectUtils {
 			InvocationTargetException {
 		Class<?> threadClazz = Class.forName(className);
 		Method method = threadClazz.getMethod(methodName, parameterTypes);
-		return method.invoke(null, null);
+		return method.invoke(null, new Object[]{});
 	}
 
 	/**
