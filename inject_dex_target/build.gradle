@@ -64,7 +64,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(path: ':inject_dex')
     compile project(path: ':inject_zygote')
-    compile project(path: ':read_memory')
+    compile project(path: ':search_memory')
 }
 
 
@@ -78,7 +78,7 @@ task build_native(type: Exec) {
         batPath = workspace + File.separator + "self_build.bat"
         commandLine batPath, workspace
     } else {
-        batPath = workspace + File.separator + "self_build.sah"
+        batPath = workspace + File.separator + "self_build.sh"
         commandLine "sh", batPath, workspace
     }
     println "execute: " + batPath

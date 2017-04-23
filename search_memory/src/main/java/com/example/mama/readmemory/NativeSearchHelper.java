@@ -1,7 +1,7 @@
 package com.example.mama.readmemory;
 
 /**
- * Created by mama on 2017/4/15.
+ * # long类型的要小写，不能大写
  */
 
 public class NativeSearchHelper {
@@ -16,8 +16,12 @@ public class NativeSearchHelper {
     public static native void smaller();
     public static native void newValue(long newValue);
     public static native void clear();
+    public static native void printResult();
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("search");
+        NativeSearchHelper.initso();
     }
+
+    public static native void setValue(long address, long value);
 }

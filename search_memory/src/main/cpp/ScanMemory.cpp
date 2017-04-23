@@ -35,9 +35,9 @@ void ScanMemory::initWithVlaue(unsigned long value) {
 void ScanMemory::printResult() const {
     cout << "test : [" << dec << lastSearchValue << "], found count : [" << resultVec.size() << "]."
          << endl;
-    if (resultVec.size() < 20) {
+    if (resultVec.size() < 100) {
         for (unsigned long address:resultVec) {
-            cout << "address: " << hex << address << endl;
+            cout << "address: " << hex << address << " -> " <<dec<< *(unsigned long *)address << endl;
         }
     }
 }
@@ -94,3 +94,4 @@ void ScanMemory::clear() {
     resultVec.clear();
     moduleVec.clear();
 }
+

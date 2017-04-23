@@ -1,9 +1,9 @@
 
 temp_dir="/data/local/tmp"
 so_name="libsearch.so"
-package=""
 pwd=`pwd`
 #package="com.example.crash_test"
+package="com.supercell.clashofclans.uc"
 
 fun_push_file()
 {
@@ -21,9 +21,9 @@ fun_push_file "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk
 
 # copy so
 unzip -o "inject_dex_target/build/outputs/apk/inject_dex_target-release.apk" lib/armeabi-v7a/${so_name} -d .
-echo "adb push lib/armeabi-v7a/${so_name} /data/data/${package}/lib/${so_name}"
 adb shell mount  -o  remount,rw  /system
 adb push lib/armeabi-v7a/${so_name} /system/lib/${so_name}
+echo adb push lib/armeabi-v7a/${so_name} /system/lib/${so_name}
 adb shell mount  -o  remount,ro  /system
 
 # execute injector
@@ -35,6 +35,8 @@ cd inject_zygote/.externalNativeBuild/cmake/release/armeabi-v7a
 echo `pwd`
 adb push ${exe_bin} ${temp_dir}/${exe_bin}
 adb shell ${temp_dir}/${exe_bin} "${package}" "/data/local/tmp/libinject-dex.so"
+
+echo adb shell ${temp_dir}/${exe_bin} "${package}" "/data/local/tmp/libinject-dex.so"
 
 #cd ${pwd}
 

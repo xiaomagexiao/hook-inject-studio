@@ -7,6 +7,7 @@
 
 #include "Common.h"
 #include "ModuleMemoryInfo.h"
+
 class ScanMemory {
 
 public:
@@ -26,14 +27,15 @@ public:
 
     void clear();
 
+    void printResult() const;
+
 private:
     unsigned long lastSearchValue;
     vector<unsigned long> resultVec;
+
     vector<ModuleMemoryInfo> moduleVec;
 
     void printModuleInfo() const;
-
-    void printResult() const;
 };
 
 

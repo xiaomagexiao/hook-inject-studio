@@ -6,6 +6,27 @@
 
 static ScanMemory *pMemory = new ScanMemory();
 
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_mama_readmemory_NativeSearchHelper_printResult(JNIEnv *env, jclass type) {
+
+    pMemory->printResult();
+
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_mama_readmemory_NativeSearchHelper_setValue(JNIEnv *env,
+                                                             jclass type,
+                                                             jlong address,
+                                                             jlong value) {
+    cout << "change " << hex << address << "'s value to " << value << endl;
+    long *pValue = (long *) address;
+    *pValue = (long) value;
+}
+
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_mama_readmemory_NativeSearchHelper_initso(
@@ -39,7 +60,8 @@ Java_com_example_mama_readmemory_NativeSearchHelper_smaller(JNIEnv *env, jclass 
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_mama_readmemory_NativeSearchHelper_newValue(JNIEnv *env, jclass type, jlong newValue) {
+Java_com_example_mama_readmemory_NativeSearchHelper_newValue(JNIEnv *env, jclass type,
+                                                             jlong newValue) {
     pMemory->newValue(newValue);
 }
 

@@ -1,10 +1,8 @@
 ## 部分内容记录
 
-#### 注入debug模式下的apk，一直提示类找不到，分析后确实没有那个类文件。
-- 配置好签名，用release版本的运行。
 
-
-
+####存在的问题
+- dex注入后几率崩溃
 
 #### 步骤
 - 加载so ok
@@ -33,6 +31,9 @@ tail -f /data/local/tmp/loglog.txt
 
 
 #### 原来依赖的module里一直只生成release的lib，把主的module改成支持c++项目后就可以生成debug的了。
+
+#### 注入debug模式下的apk，一直提示类找不到，分析后确实没有那个类文件。
+- 配置好签名，用release版本的运行。
 
 
 
