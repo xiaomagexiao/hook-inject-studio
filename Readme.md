@@ -37,6 +37,7 @@ tail -f /data/local/tmp/loglog.txt
 
 
 
+
 ```
 # 快速根据包名杀进程
 kill -9 `ps |grep supercell |awk '{print $2}'`
