@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.dex.util.HookTool;
-import com.example.mama.readmemory.NativeSearchHelper;
+import com.example.mama.readmemory.NativeHookHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,19 +75,19 @@ public class Say {
         String value = jsoncmd.optString("value");
         String address = jsoncmd.optString("address");
         if ("init".equals(action)) {
-            NativeSearchHelper.init(Long.valueOf(value));
+            NativeHookHelper.init(Long.valueOf(value));
         } else if ("bigger".equals(action)) {
-            NativeSearchHelper.bigger();
+            NativeHookHelper.bigger();
         } else if ("smaller".equals(action)) {
-            NativeSearchHelper.smaller();
+            NativeHookHelper.smaller();
         } else if ("equal".equals(action)) {
-            NativeSearchHelper.equal();
+            NativeHookHelper.equal();
         } else if ("newValue".equals(action)) {
-            NativeSearchHelper.newValue(Long.valueOf(value));
+            NativeHookHelper.newValue(Long.valueOf(value));
         } else if ("clear".equals(action)) {
-            NativeSearchHelper.clear();
+            NativeHookHelper.clear();
         } else if ("printResult".equals(action)) {
-            NativeSearchHelper.printResult();
+            NativeHookHelper.printResult();
         } else if ("setValue".equals(action)) {
             if (address == null || address.trim().length() == 0) {
                 Log.e("MAGE say", "error address[" + address + "] for set!!!");
@@ -101,7 +101,7 @@ public class Say {
 
     private static void setValue(long address, long value) {
         Log.e("MAGE", "address = " + address + ", value = " + value);
-        NativeSearchHelper.setValue(address, value);
+        NativeHookHelper.setValue(address, value);
     }
 
     private static long strToLong(String address) {

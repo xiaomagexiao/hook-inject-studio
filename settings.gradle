@@ -1,1 +1,1 @@
-include ':app', ':inject_dex', ":inject_dex_target", ":inject_zygote", ':search_memory'
+include ':app', ':hook', ':inject_dex', ":inject_dex_target", ":inject_zygote", ':search_memory'

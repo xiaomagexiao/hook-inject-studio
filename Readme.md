@@ -76,3 +76,9 @@ memory write -s 4 a01356e0 150000
 
 ```
 
+#### 资料
+- [hook got](http://bbs.pediy.com/thread-205577.htm)
+- [multidex hook]()
+
+/Users/mama/Library/Android/sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin/aarch64-linux-android-g++
+`
